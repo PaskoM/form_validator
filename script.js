@@ -24,3 +24,29 @@ function checkEmail(input) {
         showError(input, 'Email is not valid');
     }
 }
+
+function checkRequired(inputArr) {
+    inputArr.forEach(function (input) {
+        if (input.value.trim() === '') {
+            showError(input, `${getFieldName(input)} is required`);
+        } else {
+            showSuccess(input);
+        }
+    });
+}
+
+function checkLength(input, min, max) {
+    if (input.value.length < min) {
+        showError(
+            input,
+            `${getFieldName(input)} must be at least ${min} characters`
+        );
+    } else if (input.value.length > max) {
+        showError(
+            input,
+            `${getFieldName(input)} must be less than ${max} characters`
+        );
+    } else {
+        showSuccess(input);
+    }
+}
